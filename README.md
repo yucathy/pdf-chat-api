@@ -72,4 +72,5 @@ pdf-chat-api/
 - Add multi-PDF support
 - Add persistent storage (e.g., PostgreSQL + Supabase)
 - Add authentication (JWT)
+- Improve text chunking logic with sentence-level splitting (e.g., using NLTK or spaCy)
 
