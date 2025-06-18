@@ -73,4 +73,5 @@ pdf-chat-api/
 - Add persistent storage (e.g., PostgreSQL + Supabase)
 - Add authentication (JWT)
 - Improve text chunking logic with sentence-level splitting (e.g., using NLTK or spaCy)
+- Switch from L2 to cosine similarity for better semantic matching
 
