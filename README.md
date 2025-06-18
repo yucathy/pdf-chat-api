@@ -34,10 +34,42 @@ Built with **FastAPI**, **OpenAI Embeddings**, and **FAISS**, this app supports 
 ```bash
 git clone git@github.com:your-username/pdf-chat-api.git
 cd pdf-chat-api
-```bash
+```
 
-### 2. Set your OpenAI API Key
-Create a .env file:
+### 2. Set your OpenAI API Key and create a .env file
 ```bash
 OPENAI_API_KEY=your-api-key-here
+```
+
+### 3. Build and run the app with Docker Compose
 ```bash
+docker-compose up --build
+```
+Then open http://localhost:8000
+
+---
+
+## ⛏️ Project Structure
+```bash
+pdf-chat-api/
+├── app/
+│   ├── main.py           # FastAPI app entry point
+│   ├── pdf_utils.py      # PDF processing functions (text extraction, chunking)
+│   ├── embed_utils.py    # OpenAI embedding helpers
+│   ├── vector_store.py   # FAISS indexing and searching
+│   └── chat.py           # GPT answer generation logic
+├── Dockerfile
+├── docker-compose.yml
+├── requirements.txt
+└── .env
+```
+
+---
+
+## Future Work
+```bash
+Add UI with Streamlit or Gradio
+Add multi-PDF support
+Add persistent storage (e.g., PostgreSQL + Supabase)
+Add authentication (JWT)
+```
