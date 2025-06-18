@@ -67,9 +67,9 @@ pdf-chat-api/
 ---
 
 ## Future Work
-```bash
-Add UI with Streamlit or Gradio
-Add multi-PDF support
-Add persistent storage (e.g., PostgreSQL + Supabase)
-Add authentication (JWT)
-```
+
+- Add UI with Streamlit or Gradio
+- Add multi-PDF support
+- Add persistent storage (e.g., PostgreSQL + Supabase)
+- Add authentication (JWT)
+
