@@ -5,6 +5,7 @@ from .pdf_utils import extract_chunks_from_pdf
 from .embed_utils import get_embeddings_for_chunks, get_embedding
 from .vector_store import VectorStore
 from .chat import ask_gpt
+from .query_log import log_query
 
 router = APIRouter()
 
@@ -28,6 +29,7 @@ def ask_route(payload: AskRequest):
 
     # Generate answer
     answer = ask_gpt(payload.question, top_chunks)
+    log_query(payload.question, answer, payload.pdf_path)
     return {
         "question": payload.question,
         "answer": answer,

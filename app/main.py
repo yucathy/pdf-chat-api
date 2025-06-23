@@ -3,9 +3,9 @@ from fastapi import FastAPI
 import os
 from dotenv import load_dotenv
 from .routes import router
+from .query_log import init_db
 
-load_dotenv()
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+init_db()
 
 app = FastAPI()
 app.include_router(router)
