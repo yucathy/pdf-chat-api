@@ -5,7 +5,7 @@ from typing import List
 
 
 # Load API key from environment
-print(os.environ.get("OPENAI_API_KEY"))
+
 client = OpenAI(
     # This is the default and can be omitted
     api_key=os.environ.get("OPENAI_API_KEY"),
