@@ -89,24 +89,24 @@ pdf-chat-api/
 ---
 
 ## Future Work
-🧠 1. Semantic Search Optimization
+# 🧠 1. Semantic Search Optimization
 - Replace L2 distance with cosine similarity to improve high-dimensional vector retrieval accuracy
 - Experiment with different chunking strategies (fixed-length, sentence-based, or automatic segmentation)
 - Introduce keyword filtering to increase semantic relevance between retrieved chunks and queries
 - Design and conduct quantitative evaluations using test sets to measure chunk relevance coverage  
-🤖 2. Response Quality & Prompt Engineering
+# 🤖 2. Response Quality & Prompt Engineering
 - Refine the prompt to instruct GPT to only answer based on retrieved chunks  
-🚀 3. Performance & Cost Optimization
+# 🚀 3. Performance & Cost Optimization
 - Implement embedding caching and persistence to avoid redundant vectorization
 - Design a response-level caching mechanism using query hashes to store previously answered results
 - Track and optimize query response time and OpenAI token usage
 - Benchmark performance between storage methods (e.g., SQLite vs. Pickle vs. vector DB)  
-🌍 4. Multilingual and Advanced Feature Support
+# 🌍 4. Multilingual and Advanced Feature Support
 - Add support for multilingual PDF documents, including Chinese (e.g., jieba segmentation)
 - Integrate with external vector databases such as Milvus, Qdrant, or Chroma for scalable knowledge retrieval
 - Enable multi-document indexing and querying
 - Provide UI enhancements like chunk-level highlighting and expandable references  
-🧪 5. Enhanced Demo & Deployment Experience
+# 🧪 5. Enhanced Demo & Deployment Experience
 - Support deployment to Render, Hugging Face Spaces, or AWS EC2
 - Provide a screen-recorded demo video or interactive notebook for presentation
 - Implement CI/CD workflows for format checking, unit testing, and auto-deployments
