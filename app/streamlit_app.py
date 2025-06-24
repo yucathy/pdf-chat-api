@@ -1,41 +1,40 @@
 # streamlit_app.py
 import streamlit as st
-from pdf_utils import extract_chunks_from_pdf
-from embed_utils import get_embeddings_for_chunks, get_embedding
-from vector_store import VectorStore
-from chat import ask_gpt
-from query_log import log_query
+import requests
+import os
+
 
 st.set_page_config(page_title="PDF Chatbot", layout="centered")
 
 st.title("📄💬 Chat with your PDF")
 
+API_URL = os.getenv("API_URL", os.environ.get("API_URL"))
+
 uploaded_file = st.file_uploader("Upload a PDF", type="pdf")
 question = st.text_input("Ask a question about this document")
 
 if uploaded_file and question:
-    with st.spinner("Reading and processing..."):
+    with st.spinner("Sending to FastAPI..."):
         # Save uploaded file
         with open("app/tmp.pdf", "wb") as f:
             f.write(uploaded_file.read())
 
-        # Extract + embed + build index
-        chunks = extract_chunks_from_pdf("app/tmp.pdf")
-        embeddings = get_embeddings_for_chunks(chunks)
-        store = VectorStore(dim=1536)
-        store.add(embeddings, chunks)
+        payload = {
+            "question": question,
+            "pdf_path": "app/tmp.pdf"  # this path is readable while using fastAPI 
+        }
 
-        # Question → embedding → search → GPT
-        query_vector = get_embedding(question)
-        top_chunks = [text for text, _ in store.search(query_vector, k=3)]
-        answer = ask_gpt(question, top_chunks)
+        try:
+            res = requests.post(API_URL, json=payload)
+            res.raise_for_status()
+            data = res.json()
+            st.markdown("### 🤖 GPT Answer")
+            st.write(data["answer"])
 
-        # Log result
-        log_query(question, answer, "app/tmp.pdf")
+            with st.expander("🔍 Top Matching Chunks"):
+                for i, chunk in enumerate(data["top_chunks"], 1):
+                    st.markdown(f"**Chunk {i}:**\n```\n{chunk}\n```")
 
-        st.markdown("### 🤖 GPT Answer")
-        st.write(answer)
+        except requests.exceptions.RequestException as e:
+            st.error(f"API Error: {e}")
 
-        with st.expander("🔍 Context used"):
-            for i, chunk in enumerate(top_chunks, 1):
-                st.markdown(f"**Chunk {i}**:\n```\n{chunk}\n```")

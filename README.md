@@ -54,6 +54,12 @@ http://localhost:8051 (UI to upload pdf using stramlit)
 docker-compose exec api python -m test.test_xxxx
 ```
 
+### 5. Check the database
+```bash
+sqlite3 app/query_history.db
+SELECT * FROM query_log;
+```
+
 ---
 
 ## ⛏️ Project Structure
