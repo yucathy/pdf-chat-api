@@ -1,8 +1,8 @@
-# app/test_chat.py
-from pdf_utils import extract_chunks_from_pdf
-from embed_utils import get_embeddings_for_chunks, get_embedding
-from vector_store import VectorStore
-from chat import ask_gpt
+# test/test_chat.py
+from app.pdf_utils import extract_chunks_from_pdf
+from app.embed_utils import get_embeddings_for_chunks, get_embedding
+from app.vector_store import VectorStore
+from app.chat import ask_gpt
 
 # Step 1: Load and chunk PDF
 chunks = extract_chunks_from_pdf("app/can_ai_solve_crime.pdf")

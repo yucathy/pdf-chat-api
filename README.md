@@ -41,11 +41,18 @@ cd pdf-chat-api
 OPENAI_API_KEY=your-api-key-here
 ```
 
-### 3. Build and run the app with Docker Compose
+### 3. Build and run the app and show the UI with Docker Compose
 ```bash
 docker-compose up --build
 ```
 Then open http://localhost:8000
+And
+http://localhost:8051 (UI to upload pdf using stramlit)
+
+### 4. Run test file
+```bash
+docker-compose exec api python -m test.test_xxxx
+```
 
 ---
 
@@ -53,14 +60,23 @@ Then open http://localhost:8000
 ```bash
 pdf-chat-api/
 ├── app/
+│   ├── streamlit_app.py  # Streamlit UI
 │   ├── main.py           # FastAPI app entry point
+│   ├── routes.py         # FastAPI logit point
 │   ├── pdf_utils.py      # PDF processing functions (text extraction, chunking)
 │   ├── embed_utils.py    # OpenAI embedding helpers
 │   ├── vector_store.py   # FAISS indexing and searching
+│   ├── query_log.py      # Store query log
 │   └── chat.py           # GPT answer generation logic
+├── test/
+│   ├── test_embed.py    
+│   ├── test_faiss.py   
+│   ├── test_chat.py
+│   └── test_pdf.py           
 ├── Dockerfile
 ├── docker-compose.yml
 ├── requirements.txt
+├── test_ask.sh           # test chatbot function using curl
 └── .env
 ```
 
@@ -68,7 +84,6 @@ pdf-chat-api/
 
 ## Future Work
 
-- Add UI with Streamlit or Gradio
 - Add multi-PDF support
 - Add persistent storage (e.g., PostgreSQL + Supabase)
 - Add authentication (JWT)

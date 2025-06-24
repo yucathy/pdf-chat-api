@@ -1,6 +1,6 @@
-# app/test_embed.py
-from pdf_utils import extract_chunks_from_pdf
-from embed_utils import get_embeddings_for_chunks
+# test/test_embed.py
+from app.pdf_utils import extract_chunks_from_pdf
+from app.embed_utils import get_embeddings_for_chunks
 
 chunks = extract_chunks_from_pdf("app/can_ai_solve_crime.pdf")
 embeddings = get_embeddings_for_chunks(chunks)

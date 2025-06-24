@@ -1,7 +1,7 @@
-# app/test_faiss.py
-from pdf_utils import extract_chunks_from_pdf
-from embed_utils import get_embeddings_for_chunks, get_embedding
-from vector_store import VectorStore
+# test/test_faiss.py
+from app.pdf_utils import extract_chunks_from_pdf
+from app.embed_utils import get_embeddings_for_chunks, get_embedding
+from app.vector_store import VectorStore
 
 # Step 1: Get chunks
 chunks = extract_chunks_from_pdf("app/can_ai_solve_crime.pdf")

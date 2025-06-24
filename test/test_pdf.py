@@ -1,5 +1,5 @@
-# app/test_pdf.py
-from pdf_utils import extract_chunks_from_pdf
+# test/test_pdf.py
+from app.pdf_utils import extract_chunks_from_pdf
 
 chunks = extract_chunks_from_pdf("app/can_ai_solve_crime.pdf")
 
