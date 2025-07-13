@@ -22,6 +22,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # copy current work folder
 COPY ./app ./app
 COPY ./test ./test
+COPY ./evaluation ./evaluation
+COPY ./pdf_files ./pdf_files
 
 # set up active command
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]

@@ -7,12 +7,14 @@ Built with **FastAPI**, **OpenAI Embeddings**, and **FAISS**, this app supports 
 
 ## 🚀 Features
 
-- 📄 Upload and parse PDF files into clean text chunks
-- 🧠 Convert text into embeddings using OpenAI's embedding API
-- 🔍 Store and search vectors with FAISS (vector database)
-- 🤖 Use GPT (ChatCompletion API) to answer questions about the PDF content
-- 🐳 Fully containerized with Docker
-- 🔐 Secure with environment variable support via `.env`
+- Upload and parse PDF files into clean text chunks
+- Convert text into embeddings using OpenAI's embedding API
+- Store and search vectors with FAISS (vector database)
+- Use GPT (ChatCompletion API) to answer questions about the PDF content
+- Fully containerized with Docker
+- Secure with environment variable support via `.env`
+- Use streamlit as a frontend page to upload pdf file and get answer based on question
+- webpage: http://localhost:8051
 
 ---
 
@@ -78,7 +80,9 @@ pdf-chat-api/
 │   ├── test_embed.py    
 │   ├── test_faiss.py   
 │   ├── test_chat.py
-│   └── test_pdf.py           
+│   └── test_pdf.py
+├── evaluation/
+│   └── test_data.py    
 ├── Dockerfile
 ├── docker-compose.yml
 ├── requirements.txt
