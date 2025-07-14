@@ -20,12 +20,19 @@ Built with **FastAPI**, **OpenAI Embeddings**, and **FAISS**, this app supports 
 
 ## 🛠️ Tech Stack
 
-- **FastAPI** – modern async Python API framework  
-- **Uvicorn** – ASGI server for serving FastAPI  
-- **OpenAI API** – for both embeddings and GPT chat  
-- **FAISS** – for vector similarity search  
-- **PyMuPDF** – for PDF text extraction  
-- **Docker & docker-compose** – for environment isolation and easy deployment
+### 🧠 Core Libraries
+- **FastAPI** – backend API
+- **Uvicorn** – ASGI server
+- **Streamlit** – frontend UI
+- **OpenAI API** – LLM + embeddings
+- **FAISS** – vector database
+- **PyMuPDF** – PDF parsing
+
+### 🐳 DevOps / Deployment
+- **Docker & docker-compose** – multi-container orchestration
+- **Nginx** – reverse proxy for multi-service routing
+- **DigitalOcean Droplet** – cloud hosting platform
+
 
 ---
 
@@ -81,7 +88,7 @@ sudo apt-get install -y docker-compose
 ```
 ### 4. Follow getting started
 - Frontend (Streamlit): http://your-ip/
-- Backend (FastAPI): http://your-ip/api/docs
+- Backend (FastAPI): http://your-ip/api/doc
 ---
 
 ## ⛏️ Project Structure

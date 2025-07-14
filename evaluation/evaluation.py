@@ -1,7 +1,9 @@
 from sentence_transformers import SentenceTransformer, util
 import requests
 import pandas as pd
+import json
 import os
+
 
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
@@ -37,3 +39,8 @@ def calc_similarity(pred, gold):
 df['predicted_answer_similarity'] = [calc_similarity(p, g) for p, g in zip(df['predicted_answer'], df['gpt_answer'])]
 
 print(f"predicted_answer_similarity: {df['predicted_answer_similarity'].mean():.4f}")
+
+results = {"cosine_similarity": df['predicted_answer_similarity'].mean()}
+
+with open("latest_eval.json", "w") as f:
+    json.dump(results, f)
