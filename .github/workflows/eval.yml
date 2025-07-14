@@ -4,8 +4,8 @@ on:
   push:
     paths:
       - 'app/**'
-      - 'evaluation.py'
-      - 'test_data.csv'
+      - 'evaluation/evaluation.py'
+      - 'pdf_files/test_data.csv'
 
 jobs:
   eval:
