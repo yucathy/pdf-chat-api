@@ -26,7 +26,7 @@ jobs:
 
       - name: Run evaluation
         run: |
-          python evaluation.py
+          python evaluation/evaluation.py
 
       - name: Download last evaluation artifact
         uses: actions/download-artifact@v4
@@ -37,8 +37,8 @@ jobs:
       - name: Compare with last evaluation (if any)
         run: |
           if [ -f previous_eval.json ]; then
-            cp previous-eval/latest_eval.json previous_eval.json
-            python compare_score.py
+            cp evaluation/latest_eval.json evaluation/previous_eval.json
+            python evaluation/compare_score.py
           else
             echo "No previous evaluation found. Skipping comparison."
           fi
