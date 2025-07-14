@@ -4,7 +4,6 @@ import pandas as pd
 import json
 import os
 
-
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
 API_URL = os.getenv("API_URL", os.environ.get("API_URL"))
