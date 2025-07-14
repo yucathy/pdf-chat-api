@@ -1,0 +1,53 @@
+name: Evaluate RAG
+
+on:
+  push:
+    paths:
+      - 'app/**'
+      - 'evaluation.py'
+      - 'test_data.csv'
+
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run evaluation
+        run: |
+          python evaluation.py
+
+      - name: Download last evaluation artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: previous-eval
+        continue-on-error: true
+
+      - name: Compare with last evaluation (if any)
+        run: |
+          if [ -f previous_eval.json ]; then
+            cp previous-eval/latest_eval.json previous_eval.json
+            python compare_score.py
+          else
+            echo "No previous evaluation found. Skipping comparison."
+          fi
+
+      - name: Save current evaluation as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: previous-eval
+          path: latest_eval.json
+      
+
+
