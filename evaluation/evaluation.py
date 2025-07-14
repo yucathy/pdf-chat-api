@@ -41,5 +41,6 @@ print(f"predicted_answer_similarity: {df['predicted_answer_similarity'].mean():.
 
 results = {"cosine_similarity": df['predicted_answer_similarity'].mean()}
 
+
 with open("latest_eval.json", "w") as f:
     json.dump(results, f)
