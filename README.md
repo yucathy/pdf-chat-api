@@ -48,8 +48,8 @@ OPENAI_API_KEY=your-api-key-here
 docker-compose up --build
 ```
 Then open http://localhost:8000
-And
-http://localhost:8051 (UI to upload pdf using stramlit)
+and
+http://localhost:8501 (UI to upload pdf using stramlit)
 
 ### 4. Run test file
 ```bash
@@ -62,6 +62,26 @@ sqlite3 app/query_history.db
 SELECT * FROM query_log;
 ```
 
+---
+## 🌐 Deploy to Cloud (DigitalOcean + Docker)
+
+### 1. Create your Droplet on DigitalOcean
+- Choose Ubuntu 22.04 LTS
+- Select Basic plan (1vCPU / 1GB RAM is enough)
+- Use SSH key or password for access
+
+### 2. SSH into your Droplet
+```bash
+ssh root@<your-server-ip>
+```
+### 3. Install Docker & Docker Compose
+```bash
+curl -fsSL https://get.docker.com | bash
+sudo apt-get install -y docker-compose
+```
+### 4. Follow getting started
+- Frontend (Streamlit): http://your-ip/
+- Backend (FastAPI): http://your-ip/api/docs
 ---
 
 ## ⛏️ Project Structure
@@ -82,10 +102,13 @@ pdf-chat-api/
 │   ├── test_chat.py
 │   └── test_pdf.py
 ├── evaluation/
-│   └── test_data.py    
+│   └── evaluation.py    
+├── pdf_files/            # Store tested pdf files
+│   └── test_data.csv  
 ├── Dockerfile
 ├── docker-compose.yml
 ├── requirements.txt
+├── nginx.conf            # Nginx reverse proxy setup
 ├── test_ask.sh           # test chatbot function using curl
 └── .env
 ```
@@ -111,7 +134,6 @@ pdf-chat-api/
 - Enable multi-document indexing and querying
 - Provide UI enhancements like chunk-level highlighting and expandable references  
 ### 🧪 5. Enhanced Demo & Deployment Experience
-- Support deployment to Render, Hugging Face Spaces, or AWS EC2
 - Provide a screen-recorded demo video or interactive notebook for presentation
 - Implement CI/CD workflows for format checking, unit testing, and auto-deployments
 - Add persistent storage (e.g., PostgreSQL + Supabase)
